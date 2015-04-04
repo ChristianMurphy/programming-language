@@ -1,6 +1,6 @@
 string global = "global scope";
 
-func function(int one, string two) {
+func function(int one, string two) : int {
     int n = 0;
     int t = 1 + 1 + 1 + 1;
 
@@ -14,4 +14,5 @@ func function(int one, string two) {
         string another = "it works";
         n = n + 1;
     }
+    return 1;
 }

@@ -7,11 +7,11 @@ primary
 
 // A statement can be a function, a branch, an assignment, or a loop
 // Examples
-//      func example (int test) {...}
+//      func example (int test) : bool {... return true;}
 //      while (n < 10) {...}
 //      if (1 > n) {...}
 statement
-    : 'func' IDENTIFIER '(' parameter? ')' '{' statement* '}'
+    : 'func' IDENTIFIER '(' parameter? ')' ':' TYPE '{' statement* 'return' expression ';' '}'
     | 'if' '(' comparison ')' '{' statement* '}'
     | 'while' '(' comparison ')' '{' statement* '}'
     | assignment
