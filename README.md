@@ -9,4 +9,4 @@
 ### Build Instructions
 1. build the grammar file `antlr4 Hello.g4`
 2. compile the grammar `javac Hello*.java`
-3. run it `grun Hello example.txt -gui`
+3. run it `grun Hello r -gui example.txt`
