@@ -1,1 +1,1 @@
-hello parrt
+if(1==2){t=1+2;}
