@@ -9,12 +9,22 @@ primary
 // Examples
 //      func example (int test) : bool {... return true;}
 //      while (n < 10) {...}
+//      for (int i = 0; i < 10; i = i + 1) {...}
 //      if (1 > n) {...}
 statement
     : 'func' IDENTIFIER '(' parameter? ')' ':' TYPE '{' statement* 'return' expression ';' '}'
     | 'if' '(' comparison ')' '{' statement* '}'
     | 'while' '(' comparison ')' '{' statement* '}'
+    | 'for' '(' assignment comparison ';' IDENTIFIER '=' expression ')' '{' statement* '}'
     | assignment
+    | systemCall
+    ;
+
+// system calls a reserved functions that run system services
+// Example
+//      print("hello world");
+systemCall
+    : 'print' '(' expression ')' ';'
     ;
 
 // a variable can be assigned an expression
