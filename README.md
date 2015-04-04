@@ -7,6 +7,6 @@
 
 
 ### Build Instructions
-1. build the grammar file `antlr4 Hello.g4`
-2. compile the grammar `javac Hello*.java`
-3. run it `grun Hello r -gui example.txt`
+1. build the grammar file `antlr4 Team8.g4`
+2. compile the grammar `javac Team8*.java`
+3. run it `grun Team8 primary -gui example.txt`
