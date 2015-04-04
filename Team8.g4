@@ -1,27 +1,35 @@
 grammar Team8;
 
 primary
-    : (statement)*
+    : statement*
     ;
 
 statement
-    : 'func' IDENTIFIER '(' (TYPE IDENTIFIER)* ')' '{' (expression)* '}'
-    | 'if' '(' comparison '){' expression '}'
-    | 'for' '(' assignment ';' comparison ';' expression ')' '{' (expression)* '}'
-    ;
-
-comparison
-    : NUMBER '==' NUMBER
-    | STRING '==' STRING
-    | BOOLEAN
-    ;
-
-expression
-    : IDENTIFIER '=' NUMBER '+' NUMBER ';'
+    : 'func' IDENTIFIER '(' parameter? ')' '{' (statement | assignment)* '}'
+    | 'if' '(' comparison ')' '{' (statement | assignment)* '}'
+    | 'for' '(' TYPE? assignment comparison ';' assignment ')' '{' (statement | assignment)* '}'
     ;
 
 assignment
-    : TYPE IDENTIFIER '=' (NUMBER | BOOLEAN | STRING) ';'
+    : TYPE? IDENTIFIER '=' (BOOLEAN | valueOrVariable) ('+' valueOrVariable)* ';'
+    ;
+
+comparison
+    : valueOrVariable '==' valueOrVariable
+    | valueOrVariable '<' valueOrVariable
+    | valueOrVariable '>' valueOrVariable
+    | BOOLEAN
+    ;
+
+valueOrVariable
+    : NUMBER
+    | STRING
+    | IDENTIFIER
+    ;
+
+parameter
+    : TYPE IDENTIFIER
+    | TYPE IDENTIFIER (',' parameter)
     ;
 
 TYPE
