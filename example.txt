@@ -1,4 +1,6 @@
-func another(int one, string two) {
+string global = "global scope";
+
+func function(int one, string two) {
     int n = 0;
     int t = 1 + 1 + 1 + 1;
 

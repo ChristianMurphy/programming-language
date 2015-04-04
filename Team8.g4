@@ -5,15 +5,16 @@ primary
     : statement+
     ;
 
-// A statement can be a function, a branch, or a loop
+// A statement can be a function, a branch, an assignment, or a loop
 // Examples
 //      func example (int test) {...}
 //      while (n < 10) {...}
 //      if (1 > n) {...}
 statement
-    : 'func' IDENTIFIER '(' parameter? ')' '{' (statement | assignment)* '}'
-    | 'if' '(' comparison ')' '{' (statement | assignment)* '}'
-    | 'while' '(' comparison ')' '{' (statement | assignment)* '}'
+    : 'func' IDENTIFIER '(' parameter? ')' '{' statement* '}'
+    | 'if' '(' comparison ')' '{' statement* '}'
+    | 'while' '(' comparison ')' '{' statement* '}'
+    | assignment
     ;
 
 // a variable can be assigned an expression
