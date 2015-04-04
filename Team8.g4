@@ -11,7 +11,7 @@ statement
     ;
 
 assignment
-    : TYPE? IDENTIFIER '=' (BOOLEAN | valueOrVariable) ('+' valueOrVariable)* ';'
+    : TYPE? IDENTIFIER '=' (BOOLEAN | valueOrVariable) ('+' valueOrVariable)* ';'?
     ;
 
 comparison
@@ -29,7 +29,7 @@ valueOrVariable
 
 parameter
     : TYPE IDENTIFIER
-    | TYPE IDENTIFIER (',' parameter)
+    | TYPE IDENTIFIER (',' parameter)*
     ;
 
 TYPE
