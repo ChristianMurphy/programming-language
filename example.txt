@@ -1,20 +1,13 @@
-func test() {
-    int t = 1 + t;
-}
-
-func another(int test) {
-    int t = t + t;
-}
-
 func another(int one, string two) {
     int t = 0;
     t = 1 + 1 + 1 + 1;
-}
 
-if (1 == 1) {
-    int t = 1 + 1;
-}
+    if (1 == 1) {
+        int t = 1 + 1;
+    }
 
-for (int n = 1 ; n < 2 ; n = n + 1) {
-    t = n + t;
+    for (int n = 1 ; n < 2 ; n = n + 1) {
+        t = n + t;
+        string another = "it works";
+    }
 }
