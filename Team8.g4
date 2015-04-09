@@ -23,15 +23,15 @@ functionDeclaration
     ;
 
 numberFunctionDeclaration
-    : 'func' 'number' IDENTIFIER '(' parameters ')' '{' root+ 'return' IDENTIFIER '}'
+    : 'func' 'number' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
     ;
 
 stringFunctionDeclaration
-    : 'func' 'string' IDENTIFIER '(' parameters ')' '{' root+ 'return' IDENTIFIER '}'
+    : 'func' 'string' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
     ;
 
 booleanFunctionDeclaration
-    : 'func' 'boolean' IDENTIFIER '(' parameters ')' '{' root+ 'return' IDENTIFIER '}'
+    : 'func' 'boolean' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
     ;
 
 //
