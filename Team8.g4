@@ -173,8 +173,8 @@ stringComparison
 NUMBEROPERATOR
     : 'add'
     | 'subtract'
-    | 'multiply by'
-    | 'divide by'
+    | 'multiply' 'by'
+    | 'divide' 'by'
     | 'modulus'
     ;
 
@@ -196,10 +196,10 @@ BOOLEANOPERATOR
 // how numbers can be compared
 NUMBERCOMPARITOR
     : 'equals'
-    | 'less than'
-    | 'greater than'
-    | 'less than or equals'
-    | 'greater than or equals'
+    | 'less' 'than'
+    | 'greater' 'than'
+    | 'less' 'than' 'or' 'equals'
+    | 'greater' 'than' 'or' 'equals'
     ;
 
 // how strings can be compared
@@ -230,9 +230,7 @@ STRING
 
 // boolean can be true and yes or false and no
 BOOLEAN
-    : 'true'
-    | 'false'
-    | 'yes'
+    : 'yes'
     | 'no'
     ;
 
