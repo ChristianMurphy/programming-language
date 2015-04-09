@@ -3,7 +3,7 @@ grammar: clean
 	javac Team8*.java
 
 test: grammar
-	java org.antlr.v4.runtime.misc.TestRig Team8 primary -gui example.txt
+	java org.antlr.v4.runtime.misc.TestRig Team8 root -gui example.txt
 
 clean:
-	rm -f *.java *.class *.tokens
+	rm -f *.class *.tokens
