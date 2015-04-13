@@ -1,88 +1,224 @@
 grammar Team8;
 
-// A program is made of one or more statements
-primary
-    : statement+
+root
+    : (operation | comparison | assignment | loop | function)+
     ;
 
-// A statement can be a function, a branch, an assignment, or a loop
-// Examples
-//      func example (int test) : bool {... return true;}
-//      while (n < 10) {...}
-//      for (int i = 0; i < 10; i = i + 1) {...}
-//      if (1 > n) {...}
-statement
-    : 'func' IDENTIFIER '(' parameter? ')' ':' TYPE '{' statement* 'return' expression ';' '}'
-    | 'if' '(' comparison ')' '{' statement* '}'
-    | 'while' '(' comparison ')' '{' statement* '}'
-    | 'for' '(' assignment comparison ';' IDENTIFIER '=' expression ')' '{' statement* '}'
-    | assignment
-    | systemCall
+//
+///////////// FUNCTION ///////////////
+//
+function
+    : functionCall
+    | functionDeclaration
     ;
 
-// system calls a reserved functions that run system services
-// Example
-//      print("hello world");
-systemCall
-    : 'print' '(' expression ')' ';'
+functionCall
+    : IDENTIFIER '(' callParameters ')'
     ;
 
-// a variable can be assigned an expression
-// Examples
-//      int number = 0;
-//      int another = 1 + 1 + number;
-//      bool test = 1 < 2;
-assignment
-    : TYPE? IDENTIFIER '=' expression ';'
+functionDeclaration
+    : numberFunctionDeclaration
+    | stringFunctionDeclaration
+    | booleanFunctionDeclaration
     ;
 
-// an expression is either addition or a comparison
-// Examples
-//      8
-//      1 > 2
-//      1 + test + 3
-expression
-    : valueOrVariable ('+' valueOrVariable)*
-    | comparison
+numberFunctionDeclaration
+    : 'func' 'number' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
     ;
 
-// compares two variables
-// Examples
-//      1 == 2
-//      1 < 1
-//      1 <= 1
-//      2 > 1
-//      2 >= 1
-//      yes
-//      false
-comparison
-    : valueOrVariable ('<'|'>')'='? valueOrVariable
-    | valueOrVariable '==' valueOrVariable
-    | BOOLEAN
+stringFunctionDeclaration
+    : 'func' 'string' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
     ;
 
-// can either be a variable name or a variable
-valueOrVariable
-    : NUMBER
-    | BOOLEAN
-    | STRING
-    | IDENTIFIER
+booleanFunctionDeclaration
+    : 'func' 'boolean' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
     ;
 
-// parameters can be a single type and indentifier or a comma seperated list
-// Examples
-//      int one
-//      bool truth, int number, string name
+//
+/////////////// PARAMETER ////////////////////
+//
+
+callParameters
+    : ( (IDENTIFIER | comparison | operation) (',' (IDENTIFIER | comparison | operation))* )?
+    ;
+
+parameters
+    : (parameter (',' parameter)*)?
+    ;
+
 parameter
-    : TYPE IDENTIFIER
-    | parameter (',' parameter)+
+    : numberParameter
+    | stringParameter
+    | booleanParameter
     ;
 
-// there are three allowed types
-TYPE
-    : 'int'
-    | 'bool'
-    | 'string'
+numberParameter
+    : 'number' IDENTIFIER
+    ;
+
+stringParameter
+    : 'string' IDENTIFIER
+    ;
+
+booleanParameter
+    : 'boolean' IDENTIFIER
+    ;
+
+//
+////////////// LOOPING ///////////////
+//
+
+loop
+    : whileLoop
+    | forLoop
+    ;
+
+whileLoop
+    : 'while' (IDENTIFIER | booleanOperation | numberComparison | stringComparison) '{' root '}'
+    ;
+
+forLoop
+    : 'for' IDENTIFIER 'in' 'range' (NUMBER | IDENTIFIER) 'to' (NUMBER | IDENTIFIER) '{' root '}'
+    ;
+
+//
+////////////// ASSIGNMENT ////////////
+//
+
+assignment
+    : initialAssignment
+    | reassignment
+    ;
+
+initialAssignment
+    : initialNumberAssignment
+    | initialStringAssignment
+    | initialBooleanAssignemnt
+    ;
+
+initialNumberAssignment
+    : 'number' numberReassignment
+    ;
+
+initialStringAssignment
+    : 'string' stringReassignment
+    ;
+
+initialBooleanAssignemnt
+    : 'boolean' booleanReassignemnt
+    ;
+
+reassignment
+    : numberReassignment
+    | stringReassignment
+    | booleanReassignemnt
+    ;
+
+numberReassignment
+    : IDENTIFIER ':=' (NUMBER | numberOperation)
+    ;
+
+stringReassignment
+    : IDENTIFIER ':=' (STRING | stringOperation)
+    ;
+
+booleanReassignemnt
+    : IDENTIFIER ':=' (BOOLEAN | booleanOperation | numberComparison | stringComparison)
+    ;
+
+//
+///////////// OPERATIONS /////////////
+//
+
+operation
+    : stringOperation
+    | numberOperation
+    | booleanOperation
+    ;
+
+numberOperation
+    : (NUMBER | IDENTIFIER) (NUMBEROPERATOR (NUMBER | IDENTIFIER))+
+    ;
+
+stringOperation
+    : (STRING | IDENTIFIER) (STRINGOPERATOR (STRING | IDENTIFIER))+
+    ;
+
+booleanOperation
+    : (BOOLEAN | IDENTIFIER) (BOOLEANOPERATOR (BOOLEAN | IDENTIFIER))+
+    ;
+
+//
+////////////// COMPARISONS /////////////////
+//
+
+comparison
+    : numberComparison
+    | stringComparison
+    ;
+
+numberComparison
+    : (NUMBER | IDENTIFIER) NUMBERCOMPARITOR (NUMBER | IDENTIFIER)
+    ;
+
+stringComparison
+    : (STRING | IDENTIFIER) STRINGCOMPARITOR (STRING | IDENTIFIER)
+    ;
+
+//
+///////////// OPERATORS ///////////////
+//
+
+// operations that can be run on numbers
+NUMBEROPERATOR
+    : 'add'
+    | 'subtract'
+    | 'multiply by'
+    | 'divide by'
+    | 'modulus'
+    ;
+
+// operations that can be run on strings
+STRINGOPERATOR
+    : 'append'
+    ;
+
+BOOLEANOPERATOR
+    : 'and'
+    | 'or'
+    | 'xor'
+    ;
+
+//
+///////////// COMPARITORS ///////////////
+//
+
+// how numbers can be compared
+NUMBERCOMPARITOR
+    : 'equals'
+    | 'less than'
+    | 'greater than'
+    | 'less than or equals'
+    | 'greater than or equals'
+    ;
+
+// how strings can be compared
+STRINGCOMPARITOR
+    : 'equals'
+    ;
+
+//
+////////////// TYPES //////////////////
+//
+
+// Identifiers, variable names and function names can only be lower case
+IDENTIFIER
+    : [a-z]+
+    ;
+
+// int type can be any unsigned whole number
+NUMBER
+    : [0-9]+
     ;
 
 // a string can contain uppercase, lowercase, numbers and spaces
@@ -92,25 +228,22 @@ STRING
     : '"' [ a-zA-Z0-9]+ '"'
     ;
 
-// Identifiers, variable names and function names can only be lower case
-IDENTIFIER
-    : [a-z]+
-    ;
-
 // boolean can be true and yes or false and no
 BOOLEAN
-    : 'true'
-    | 'false'
-    | 'yes'
+    : 'yes'
     | 'no'
     ;
 
-// int type can be any unsigned whole number
-NUMBER
-    : [0-9]+
-    ;
+//
+////////////// IGNORED /////////////////
+//
 
 // this language ignores whitespace
 WHITESPACE
     : [ \t\r\n]+ -> skip
+    ;
+
+// skip over comments
+COMMENT
+    : '//' ~( '\r' | '\n' )* -> skip
     ;

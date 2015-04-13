@@ -1,22 +1,15 @@
-string global = "global scope";
-
-func function(int one, string two) : int {
-    int n = 0;
-    int t = 1 + 1 + 1 + 1;
-
-    if (1 == 1) {
-        int t = 1 + 1;
-    }
-
-    for (int i = 0; i < 10 ; i = i + 1) {
-        print(i);
-    }
-
-    while (n < 2) {
-        t = n + t;
-        bool b = yes;
-        string another = "it works";
-        n = n + 1;
-    }
-    return 1;
+// comment
+string one := "one" append "two"
+number two := 1 add 2
+boolean three := yes and no
+for index in range 1 to 3 {
+    one := one add 1
+}
+while 1 equals 2 {
+    one := 1 multiply by 1
+}
+func number test () {
+    number four := 4
+    test(four)
+    return four
 }
