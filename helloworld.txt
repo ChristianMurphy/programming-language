@@ -1,1 +1,8 @@
 test := "hello world"
+
+func number fact (number n) {
+	number temp := fact(n subtract 1) multiply by n
+	return temp
+}
+
+fact(4)

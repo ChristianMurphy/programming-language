@@ -5,7 +5,7 @@ superRoot
     ;
 
 root
-    : (operation | comparison | assignment | loop | function)+
+    : (operation | comparison | assignment | loop | function | functionCall)+
     ;
 
 //
@@ -43,7 +43,7 @@ booleanFunctionDeclaration
 //
 
 callParameters
-    : ( (IDENTIFIER | comparison | operation) (',' (IDENTIFIER | comparison | operation))* )?
+    : ( (IDENTIFIER | comparison | operation | NUMBER) (',' (IDENTIFIER | comparison | operation | NUMBER))* )?
     ;
 
 parameters
@@ -141,15 +141,15 @@ operation
     ;
 
 numberOperation
-    : (NUMBER | IDENTIFIER) (NUMBEROPERATOR (NUMBER | IDENTIFIER))+
+    : (NUMBER | IDENTIFIER | functionCall) (NUMBEROPERATOR (NUMBER | IDENTIFIER | functionCall))+
     ;
 
 stringOperation
-    : (STRING | IDENTIFIER) (STRINGOPERATOR (STRING | IDENTIFIER))+
+    : (STRING | IDENTIFIER | functionCall) (STRINGOPERATOR (STRING | IDENTIFIER | functionCall))+
     ;
 
 booleanOperation
-    : (BOOLEAN | IDENTIFIER) (BOOLEANOPERATOR (BOOLEAN | IDENTIFIER))+
+    : (BOOLEAN | IDENTIFIER| functionCall) (BOOLEANOPERATOR (BOOLEAN | IDENTIFIER | functionCall))+
     ;
 
 //
