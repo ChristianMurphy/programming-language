@@ -1,0 +1,17 @@
+[
+    "Calculate the factorial" show
+    @[
+        "n" def
+        @[n 1 - fact! n *]
+        @[1]
+        n 0 > if!
+    ] "fact" def
+
+    "Testing factorial" show
+    "For n = 4, expect 4*3*2*1=24" show
+    4 fact! "result" def
+    @["passed" show] @["failed" show]  result 4 = if!
+    "Result was:" show
+    result show
+    "Thats all!" show
+]

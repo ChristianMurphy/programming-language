@@ -1,5 +1,9 @@
 grammar Team8;
 
+superRoot
+    : root
+    ;
+
 root
     : (operation | comparison | assignment | loop | function)+
     ;
