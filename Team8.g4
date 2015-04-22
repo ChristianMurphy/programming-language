@@ -5,7 +5,7 @@ superRoot
     ;
 
 root
-    : (operation | comparison | assignment | loop | function | functionCall)+
+    : (operation | comparison | assignment | loop | function | functionCall | branch)+
     ;
 
 //
@@ -67,6 +67,14 @@ stringParameter
 booleanParameter
     : 'boolean' IDENTIFIER
     ;
+
+
+//
+///////////// BRANCHING ///////////////
+//
+branch
+	: 'if' '(' (booleanOperation | comparison) ')' '{' root '}' 'else' '{' root '}'
+	;
 
 //
 ////////////// LOOPING ///////////////

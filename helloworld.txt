@@ -1,7 +1,12 @@
 test := "hello world"
 
 func number fact (number n) {
-	number temp := fact(n subtract 1) multiply by n
+	if (n equals 1) {
+		number temp := 1
+	}
+	else {
+		number temp := fact(n subtract 1) multiply by n
+	}
 	return temp
 }
 
