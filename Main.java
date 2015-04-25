@@ -11,7 +11,7 @@ class Main {
 			CharStream cs = new ANTLRFileStream("example.txt");
 			Team8Lexer lexer = new Team8Lexer(cs);
 			CommonTokenStream tokens = new CommonTokenStream(lexer);
-			Team8Parser parser = new Team8Parser(tokens);
+			yoyoheadParser parser = new yoyoheadParser(tokens);
 			ParserRuleContext tree = parser.root(); // parse
 
 			ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
