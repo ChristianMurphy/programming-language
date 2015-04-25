@@ -117,13 +117,35 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLoop(Team8Parser.LoopContext ctx) { }
+	@Override public void enterLoop(Team8Parser.LoopContext ctx) {
+		if (ctx.numberComparison() != null) {
+			System.out.println("push " + ctx.numberComparison().IDENTIFIER(0));
+			System.out.println("push " + ctx.numberComparison().IDENTIFIER(1));
+			switch (ctx.numberComparison().NUMBERCOMPARITOR().toString()) {
+				case "greater than":
+					System.out.println("greater");
+					break;
+			}
+		}
+		System.out.println("testfgoto 23");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLoop(Team8Parser.LoopContext ctx) { }
+	@Override public void exitLoop(Team8Parser.LoopContext ctx) {
+		if (ctx.numberComparison() != null) {
+			System.out.println("push " + ctx.numberComparison().IDENTIFIER(0));
+			System.out.println("push " + ctx.numberComparison().IDENTIFIER(1));
+			switch (ctx.numberComparison().NUMBERCOMPARITOR().toString()) {
+				case "greater than":
+					System.out.println("greater");
+					break;
+			}
+		}
+		System.out.println("testtgoto 11");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -255,13 +277,30 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberOperation(Team8Parser.NumberOperationContext ctx) { }
+	@Override public void enterNumberOperation(Team8Parser.NumberOperationContext ctx) {
+		System.out.println("push " + ctx.IDENTIFIER(0));
+		System.out.println("push " + ctx.IDENTIFIER(1));
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberOperation(Team8Parser.NumberOperationContext ctx) { }
+	@Override public void exitNumberOperation(Team8Parser.NumberOperationContext ctx) {
+		switch (ctx.NUMBEROPERATOR().toString()) {
+			case "multiply by":
+				System.out.println("multply");
+				break;
+			case "subtract":
+				System.out.println("minus");
+				break;
+			case "add":
+				System.out.println("add");
+				break;
+			default:
+				System.out.println("INVALID COMMAND " + ctx.NUMBEROPERATOR());
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
