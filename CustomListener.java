@@ -1,7 +1,6 @@
 // Generated from Team8.g4 by ANTLR 4.5
 
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -10,49 +9,51 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class CustomListener implements Team8Listener {
+public class CustomListener implements yoyoheadListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRoot(Team8Parser.RootContext ctx) { }
+	@Override public void enterRoot(yoyoheadParser.RootContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRoot(Team8Parser.RootContext ctx) { }
+	@Override public void exitRoot(yoyoheadParser.RootContext ctx) {
+		System.out.println("end");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterContext(Team8Parser.ContextContext ctx) { }
+	@Override public void enterContext(yoyoheadParser.ContextContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitContext(Team8Parser.ContextContext ctx) { }
+	@Override public void exitContext(yoyoheadParser.ContextContext ctx) { }
 	/**
 	* {@inheritDoc}
 	*
 	* <p>The default implementation does nothing.</p>
 	*/
-	@Override public void enterSystemCall(Team8Parser.SystemCallContext ctx) { }
+	@Override public void enterSystemCall(yoyoheadParser.SystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSystemCall(Team8Parser.SystemCallContext ctx) { }
+	@Override public void exitSystemCall(yoyoheadParser.SystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVoidSystemCall(Team8Parser.VoidSystemCallContext ctx) {
+	@Override public void enterVoidSystemCall(yoyoheadParser.VoidSystemCallContext ctx) {
 		System.out.println("push " + ctx.IDENTIFIER());
 		System.out.println("print");
 	}
@@ -61,13 +62,13 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVoidSystemCall(Team8Parser.VoidSystemCallContext ctx) { }
+	@Override public void exitVoidSystemCall(yoyoheadParser.VoidSystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberSystemCall(Team8Parser.NumberSystemCallContext ctx) {
+	@Override public void enterNumberSystemCall(yoyoheadParser.NumberSystemCallContext ctx) {
 		System.out.println("read");
 	}
 	/**
@@ -75,49 +76,49 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberSystemCall(Team8Parser.NumberSystemCallContext ctx) { }
+	@Override public void exitNumberSystemCall(yoyoheadParser.NumberSystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringSystemCall(Team8Parser.StringSystemCallContext ctx) { }
+	@Override public void enterStringSystemCall(yoyoheadParser.StringSystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringSystemCall(Team8Parser.StringSystemCallContext ctx) { }
+	@Override public void exitStringSystemCall(yoyoheadParser.StringSystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanSystemCall(Team8Parser.BooleanSystemCallContext ctx) { }
+	@Override public void enterBooleanSystemCall(yoyoheadParser.BooleanSystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanSystemCall(Team8Parser.BooleanSystemCallContext ctx) { }
+	@Override public void exitBooleanSystemCall(yoyoheadParser.BooleanSystemCallContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBranch(Team8Parser.BranchContext ctx) { }
+	@Override public void enterBranch(yoyoheadParser.BranchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBranch(Team8Parser.BranchContext ctx) { }
+	@Override public void exitBranch(yoyoheadParser.BranchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLoop(Team8Parser.LoopContext ctx) {
+	@Override public void enterLoop(yoyoheadParser.LoopContext ctx) {
 		if (ctx.numberComparison() != null) {
 			System.out.println("push " + ctx.numberComparison().IDENTIFIER(0));
 			System.out.println("push " + ctx.numberComparison().IDENTIFIER(1));
@@ -127,14 +128,14 @@ public class CustomListener implements Team8Listener {
 					break;
 			}
 		}
-		System.out.println("testfgoto 23");
+		System.out.println("testfgoto 22");
 	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLoop(Team8Parser.LoopContext ctx) {
+	@Override public void exitLoop(yoyoheadParser.LoopContext ctx) {
 		if (ctx.numberComparison() != null) {
 			System.out.println("push " + ctx.numberComparison().IDENTIFIER(0));
 			System.out.println("push " + ctx.numberComparison().IDENTIFIER(1));
@@ -144,86 +145,86 @@ public class CustomListener implements Team8Listener {
 					break;
 			}
 		}
-		System.out.println("testtgoto 11");
+		System.out.println("testtgoto 10");
 	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignment(Team8Parser.AssignmentContext ctx) { }
+	@Override public void enterAssignment(yoyoheadParser.AssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignment(Team8Parser.AssignmentContext ctx) { }
+	@Override public void exitAssignment(yoyoheadParser.AssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInitialAssignment(Team8Parser.InitialAssignmentContext ctx) { }
+	@Override public void enterInitialAssignment(yoyoheadParser.InitialAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInitialAssignment(Team8Parser.InitialAssignmentContext ctx) { }
+	@Override public void exitInitialAssignment(yoyoheadParser.InitialAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInitialNumberAssignment(Team8Parser.InitialNumberAssignmentContext ctx) { }
+	@Override public void enterInitialNumberAssignment(yoyoheadParser.InitialNumberAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInitialNumberAssignment(Team8Parser.InitialNumberAssignmentContext ctx) { }
+	@Override public void exitInitialNumberAssignment(yoyoheadParser.InitialNumberAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInitialStringAssignment(Team8Parser.InitialStringAssignmentContext ctx) { }
+	@Override public void enterInitialStringAssignment(yoyoheadParser.InitialStringAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInitialStringAssignment(Team8Parser.InitialStringAssignmentContext ctx) { }
+	@Override public void exitInitialStringAssignment(yoyoheadParser.InitialStringAssignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInitialBooleanAssignemnt(Team8Parser.InitialBooleanAssignemntContext ctx) { }
+	@Override public void enterInitialBooleanAssignemnt(yoyoheadParser.InitialBooleanAssignemntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInitialBooleanAssignemnt(Team8Parser.InitialBooleanAssignemntContext ctx) { }
+	@Override public void exitInitialBooleanAssignemnt(yoyoheadParser.InitialBooleanAssignemntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReassignment(Team8Parser.ReassignmentContext ctx) { }
+	@Override public void enterReassignment(yoyoheadParser.ReassignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReassignment(Team8Parser.ReassignmentContext ctx) { }
+	@Override public void exitReassignment(yoyoheadParser.ReassignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberReassignment(Team8Parser.NumberReassignmentContext ctx) {
+	@Override public void enterNumberReassignment(yoyoheadParser.NumberReassignmentContext ctx) {
 		if (ctx.NUMBER() != null) {
 			System.out.println("push " + ctx.NUMBER());
 		}
@@ -233,7 +234,7 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberReassignment(Team8Parser.NumberReassignmentContext ctx) {
+	@Override public void exitNumberReassignment(yoyoheadParser.NumberReassignmentContext ctx) {
 		System.out.println("store " + ctx.IDENTIFIER());
 	}
 	/**
@@ -241,43 +242,43 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringReassignment(Team8Parser.StringReassignmentContext ctx) { }
+	@Override public void enterStringReassignment(yoyoheadParser.StringReassignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringReassignment(Team8Parser.StringReassignmentContext ctx) { }
+	@Override public void exitStringReassignment(yoyoheadParser.StringReassignmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanReassignemnt(Team8Parser.BooleanReassignemntContext ctx) { }
+	@Override public void enterBooleanReassignemnt(yoyoheadParser.BooleanReassignemntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanReassignemnt(Team8Parser.BooleanReassignemntContext ctx) { }
+	@Override public void exitBooleanReassignemnt(yoyoheadParser.BooleanReassignemntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperation(Team8Parser.OperationContext ctx) { }
+	@Override public void enterOperation(yoyoheadParser.OperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOperation(Team8Parser.OperationContext ctx) { }
+	@Override public void exitOperation(yoyoheadParser.OperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberOperation(Team8Parser.NumberOperationContext ctx) {
+	@Override public void enterNumberOperation(yoyoheadParser.NumberOperationContext ctx) {
 		System.out.println("push " + ctx.IDENTIFIER(0));
 		System.out.println("push " + ctx.IDENTIFIER(1));
 	}
@@ -286,10 +287,10 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberOperation(Team8Parser.NumberOperationContext ctx) {
+	@Override public void exitNumberOperation(yoyoheadParser.NumberOperationContext ctx) {
 		switch (ctx.NUMBEROPERATOR().toString()) {
 			case "multiply by":
-				System.out.println("multply");
+				System.out.println("multiply");
 				break;
 			case "subtract":
 				System.out.println("minus");
@@ -306,61 +307,61 @@ public class CustomListener implements Team8Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringOperation(Team8Parser.StringOperationContext ctx) { }
+	@Override public void enterStringOperation(yoyoheadParser.StringOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringOperation(Team8Parser.StringOperationContext ctx) { }
+	@Override public void exitStringOperation(yoyoheadParser.StringOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanOperation(Team8Parser.BooleanOperationContext ctx) { }
+	@Override public void enterBooleanOperation(yoyoheadParser.BooleanOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanOperation(Team8Parser.BooleanOperationContext ctx) { }
+	@Override public void exitBooleanOperation(yoyoheadParser.BooleanOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComparison(Team8Parser.ComparisonContext ctx) { }
+	@Override public void enterComparison(yoyoheadParser.ComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComparison(Team8Parser.ComparisonContext ctx) { }
+	@Override public void exitComparison(yoyoheadParser.ComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberComparison(Team8Parser.NumberComparisonContext ctx) { }
+	@Override public void enterNumberComparison(yoyoheadParser.NumberComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberComparison(Team8Parser.NumberComparisonContext ctx) { }
+	@Override public void exitNumberComparison(yoyoheadParser.NumberComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringComparison(Team8Parser.StringComparisonContext ctx) { }
+	@Override public void enterStringComparison(yoyoheadParser.StringComparisonContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringComparison(Team8Parser.StringComparisonContext ctx) { }
+	@Override public void exitStringComparison(yoyoheadParser.StringComparisonContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

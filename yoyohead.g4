@@ -1,4 +1,4 @@
-grammar Team8;
+grammar yoyohead;
 
 root
     : context
