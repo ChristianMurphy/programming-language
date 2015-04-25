@@ -5,69 +5,34 @@ superRoot
     ;
 
 root
-    : (operation | comparison | assignment | loop | function | functionCall | branch)+
+    : (operation | comparison | assignment | loop | branch | systemCall)+
     ;
 
 //
-///////////// FUNCTION ///////////////
+///////////// SYSTEM CALL ////////////
 //
-function
-    : functionCall
-    | functionDeclaration
+systemCall
+	: voidSystemCall
+	| numberSystemCall
+    | stringSystemCall
+    | booleanSystemCall
+	;
+
+voidSystemCall
+    : 'print(' IDENTIFIER ')'
     ;
 
-functionCall
-    : IDENTIFIER '(' callParameters ')'
+numberSystemCall
+    : 'readInt()'
     ;
 
-functionDeclaration
-    : numberFunctionDeclaration
-    | stringFunctionDeclaration
-    | booleanFunctionDeclaration
+stringSystemCall
+    : 'readString()'
     ;
 
-numberFunctionDeclaration
-    : 'func' 'number' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
+booleanSystemCall
+    : 'readBoolean()'
     ;
-
-stringFunctionDeclaration
-    : 'func' 'string' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
-    ;
-
-booleanFunctionDeclaration
-    : 'func' 'boolean' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
-    ;
-
-//
-/////////////// PARAMETER ////////////////////
-//
-
-callParameters
-    : ( (IDENTIFIER | comparison | operation | NUMBER) (',' (IDENTIFIER | comparison | operation | NUMBER))* )?
-    ;
-
-parameters
-    : (parameter (',' parameter)*)?
-    ;
-
-parameter
-    : numberParameter
-    | stringParameter
-    | booleanParameter
-    ;
-
-numberParameter
-    : 'number' IDENTIFIER
-    ;
-
-stringParameter
-    : 'string' IDENTIFIER
-    ;
-
-booleanParameter
-    : 'boolean' IDENTIFIER
-    ;
-
 
 //
 ///////////// BRANCHING ///////////////
@@ -127,7 +92,7 @@ reassignment
     ;
 
 numberReassignment
-    : IDENTIFIER ':=' (NUMBER | numberOperation)
+    : IDENTIFIER ':=' (NUMBER | numberOperation | numberSystemCall)
     ;
 
 stringReassignment
@@ -149,15 +114,15 @@ operation
     ;
 
 numberOperation
-    : (NUMBER | IDENTIFIER | functionCall) (NUMBEROPERATOR (NUMBER | IDENTIFIER | functionCall))+
+    : IDENTIFIER NUMBEROPERATOR IDENTIFIER
     ;
 
 stringOperation
-    : (STRING | IDENTIFIER | functionCall) (STRINGOPERATOR (STRING | IDENTIFIER | functionCall))+
+    : IDENTIFIER STRINGOPERATOR IDENTIFIER
     ;
 
 booleanOperation
-    : (BOOLEAN | IDENTIFIER| functionCall) (BOOLEANOPERATOR (BOOLEAN | IDENTIFIER | functionCall))+
+    : IDENTIFIER BOOLEANOPERATOR IDENTIFIER
     ;
 
 //
@@ -170,11 +135,11 @@ comparison
     ;
 
 numberComparison
-    : (NUMBER | IDENTIFIER) NUMBERCOMPARITOR (NUMBER | IDENTIFIER)
+    : IDENTIFIER NUMBERCOMPARITOR  IDENTIFIER
     ;
 
 stringComparison
-    : (STRING | IDENTIFIER) STRINGCOMPARITOR (STRING | IDENTIFIER)
+    : IDENTIFIER STRINGCOMPARITOR IDENTIFIER
     ;
 
 //
@@ -210,8 +175,6 @@ NUMBERCOMPARITOR
     : 'equals'
     | 'less than'
     | 'greater than'
-    | 'less than or equals'
-    | 'greater than or equals'
     ;
 
 // how strings can be compared

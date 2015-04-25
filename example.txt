@@ -1,16 +1,10 @@
-// comment
-// string one := "one" append "two"
-number two := 1
-// add 2
-// boolean three := yes and no
-// for index in range 1 to 3 {
-//    one := one add 1
-// }
-// while 1 equals 2 {
-//    one := 1 multiply by 1
-//}
-//func number test () {
-//    number four := 4
-//    test(four)
-//    return four
-//}
+number input := readInt()
+number fact := 1
+number one := 1
+
+while input greater than one {
+    fact := fact multiply by input
+    input := input subtract one
+}
+
+print(fact)
