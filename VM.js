@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var file = fs.readFile('./Factorial.dpl.int', 'utf8', function(error, file) {
+var file = fs.readFile(process.argv[2], 'utf8', function(error, file) {
     file = file.split('\n');
     var line;
     var programCounter = 0;
@@ -15,11 +15,10 @@ var file = fs.readFile('./Factorial.dpl.int', 'utf8', function(error, file) {
     }
 
     while (line != 'end') {
-        console.log(line);
         var tokens = line.split(' ');
         switch (tokens[0]) {
             case 'read':
-                stack.push(parseInt('3', 10));
+                stack.push(parseInt(process.argv[3], 10));
 
                 break;
             case 'store':
