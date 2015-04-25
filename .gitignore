@@ -4,6 +4,7 @@
 *.tokens
 *.java
 !Main.java
+!CustomListener.java
 
 ### Java ###
 *.class

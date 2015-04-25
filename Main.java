@@ -15,7 +15,7 @@ class Main {
 			ParserRuleContext tree = parser.root(); // parse
 
 			ParseTreeWalker walker = new ParseTreeWalker(); // create standard walker
-			Team8BaseListener extractor = new Team8BaseListener();
+			CustomListener extractor = new CustomListener();
 			walker.walk(extractor, tree); // initiate walk of tree with listener
 		} catch (Exception e) {
 			e.printStackTrace();

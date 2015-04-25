@@ -1,84 +1,52 @@
 grammar Team8;
 
 root
-    : (operation | comparison | assignment | loop | function)+
+    : context
+    ;
+
+context
+    : (operation | comparison | assignment | loop | branch | systemCall)+
     ;
 
 //
-///////////// FUNCTION ///////////////
+///////////// SYSTEM CALL ////////////
 //
-function
-    : functionCall
-    | functionDeclaration
+systemCall
+	: voidSystemCall
+	| numberSystemCall
+    | stringSystemCall
+    | booleanSystemCall
+	;
+
+voidSystemCall
+    : 'print(' IDENTIFIER ')'
     ;
 
-functionCall
-    : IDENTIFIER '(' callParameters ')'
+numberSystemCall
+    : 'readInt()'
     ;
 
-functionDeclaration
-    : numberFunctionDeclaration
-    | stringFunctionDeclaration
-    | booleanFunctionDeclaration
+stringSystemCall
+    : 'readString()'
     ;
 
-numberFunctionDeclaration
-    : 'func' 'number' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
-    ;
-
-stringFunctionDeclaration
-    : 'func' 'string' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
-    ;
-
-booleanFunctionDeclaration
-    : 'func' 'boolean' IDENTIFIER '(' parameters ')' '{' root 'return' IDENTIFIER '}'
+booleanSystemCall
+    : 'readBoolean()'
     ;
 
 //
-/////////////// PARAMETER ////////////////////
+///////////// BRANCHING ///////////////
 //
-
-callParameters
-    : ( (IDENTIFIER | comparison | operation) (',' (IDENTIFIER | comparison | operation))* )?
-    ;
-
-parameters
-    : (parameter (',' parameter)*)?
-    ;
-
-parameter
-    : numberParameter
-    | stringParameter
-    | booleanParameter
-    ;
-
-numberParameter
-    : 'number' IDENTIFIER
-    ;
-
-stringParameter
-    : 'string' IDENTIFIER
-    ;
-
-booleanParameter
-    : 'boolean' IDENTIFIER
-    ;
+branch
+	: 'if' '(' (booleanOperation | comparison) ')' '{' context '}' 'else' '{' context '}'
+	;
 
 //
 ////////////// LOOPING ///////////////
 //
 
 loop
-    : whileLoop
-    | forLoop
-    ;
-
-whileLoop
-    : 'while' (IDENTIFIER | booleanOperation | numberComparison | stringComparison) '{' root '}'
-    ;
-
-forLoop
-    : 'for' IDENTIFIER 'in' 'range' (NUMBER | IDENTIFIER) 'to' (NUMBER | IDENTIFIER) '{' root '}'
+    : 'while' (IDENTIFIER | booleanOperation | numberComparison | stringComparison) '{' context '}'
     ;
 
 //
@@ -115,7 +83,7 @@ reassignment
     ;
 
 numberReassignment
-    : IDENTIFIER ':=' (NUMBER | numberOperation)
+    : IDENTIFIER ':=' (NUMBER | numberOperation | numberSystemCall)
     ;
 
 stringReassignment
@@ -137,15 +105,15 @@ operation
     ;
 
 numberOperation
-    : (NUMBER | IDENTIFIER) (NUMBEROPERATOR (NUMBER | IDENTIFIER))+
+    : IDENTIFIER NUMBEROPERATOR IDENTIFIER
     ;
 
 stringOperation
-    : (STRING | IDENTIFIER) (STRINGOPERATOR (STRING | IDENTIFIER))+
+    : IDENTIFIER STRINGOPERATOR IDENTIFIER
     ;
 
 booleanOperation
-    : (BOOLEAN | IDENTIFIER) (BOOLEANOPERATOR (BOOLEAN | IDENTIFIER))+
+    : IDENTIFIER BOOLEANOPERATOR IDENTIFIER
     ;
 
 //
@@ -158,11 +126,11 @@ comparison
     ;
 
 numberComparison
-    : (NUMBER | IDENTIFIER) NUMBERCOMPARITOR (NUMBER | IDENTIFIER)
+    : IDENTIFIER NUMBERCOMPARITOR  IDENTIFIER
     ;
 
 stringComparison
-    : (STRING | IDENTIFIER) STRINGCOMPARITOR (STRING | IDENTIFIER)
+    : IDENTIFIER STRINGCOMPARITOR IDENTIFIER
     ;
 
 //
@@ -198,8 +166,6 @@ NUMBERCOMPARITOR
     : 'equals'
     | 'less than'
     | 'greater than'
-    | 'less than or equals'
-    | 'greater than or equals'
     ;
 
 // how strings can be compared
