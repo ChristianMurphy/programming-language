@@ -1,10 +1,10 @@
 grammar Team8;
 
-superRoot
-    : root
+root
+    : context
     ;
 
-root
+context
     : (operation | comparison | assignment | loop | branch | systemCall)+
     ;
 
@@ -38,7 +38,7 @@ booleanSystemCall
 ///////////// BRANCHING ///////////////
 //
 branch
-	: 'if' '(' (booleanOperation | comparison) ')' '{' root '}' 'else' '{' root '}'
+	: 'if' '(' (booleanOperation | comparison) ')' '{' context '}' 'else' '{' context '}'
 	;
 
 //
@@ -46,16 +46,7 @@ branch
 //
 
 loop
-    : whileLoop
-    | forLoop
-    ;
-
-whileLoop
-    : 'while' (IDENTIFIER | booleanOperation | numberComparison | stringComparison) '{' root '}'
-    ;
-
-forLoop
-    : 'for' IDENTIFIER 'in' 'range' (NUMBER | IDENTIFIER) 'to' (NUMBER | IDENTIFIER) '{' root '}'
+    : 'while' (IDENTIFIER | booleanOperation | numberComparison | stringComparison) '{' context '}'
     ;
 
 //
