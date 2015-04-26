@@ -1,4 +1,4 @@
-read
+read string
 store input
 push 1
 store fact

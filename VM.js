@@ -20,7 +20,20 @@ fs.readFile(process.argv[replCounter++], 'utf8', function(error, file) {
         var tokens = line.split(' ');
         switch (tokens[0]) {
             case 'read':
-                stack.push(parseInt(process.argv[replCounter++], 10));
+                switch (tokens[1]) {
+                    case 'number':
+                        stack.push(parseInt(process.argv[replCounter++], 10));
+                        break;
+                    case 'string':
+                        stack.push(process.argv[replCounter++]);
+                        break;
+                    case 'boolean':
+                        if (process.argv[replCounter++] === 'yes') {
+                            stack.push(true);
+                        } else {
+                            stack.push(false);
+                        }
+                }
                 break;
 
             case 'store':

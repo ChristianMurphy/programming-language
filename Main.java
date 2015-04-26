@@ -9,7 +9,7 @@ class Main {
 		// Java read file stream from example.txt
 		try {
 			CharStream cs = new ANTLRFileStream(args[0]);
-			Team8Lexer lexer = new Team8Lexer(cs);
+			yoyoheadLexer lexer = new yoyoheadLexer(cs);
 			CommonTokenStream tokens = new CommonTokenStream(lexer);
 			yoyoheadParser parser = new yoyoheadParser(tokens);
 			ParserRuleContext tree = parser.root(); // parse
