@@ -5,7 +5,7 @@ root
     ;
 
 context
-    : (operation | comparison | assignment | loop | branch | systemCall)+
+    : (assignment | loop | branch | systemCall)+
     ;
 
 //
@@ -23,7 +23,7 @@ voidSystemCall
     ;
 
 numberSystemCall
-    : 'readInt()'
+    : 'readNumber()'
     ;
 
 stringSystemCall
