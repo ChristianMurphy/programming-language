@@ -1,0 +1,25 @@
+read
+store input
+push 1
+store fact
+push 1
+store one
+push input
+push one
+greater
+testfgoto 22
+push fact
+push input
+multiply
+store fact
+push input
+push one
+minus
+store input
+push input
+push one
+greater
+testtgoto 10
+push fact
+print
+end
