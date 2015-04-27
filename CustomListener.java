@@ -69,7 +69,7 @@ public class CustomListener implements yoyoheadListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void enterNumberSystemCall(yoyoheadParser.NumberSystemCallContext ctx) {
-		System.out.println("read");
+		System.out.println("read string");
 	}
 	/**
 	 * {@inheritDoc}
@@ -82,7 +82,9 @@ public class CustomListener implements yoyoheadListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringSystemCall(yoyoheadParser.StringSystemCallContext ctx) { }
+	@Override public void enterStringSystemCall(yoyoheadParser.StringSystemCallContext ctx) {
+		System.out.println("read string");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -94,7 +96,9 @@ public class CustomListener implements yoyoheadListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanSystemCall(yoyoheadParser.BooleanSystemCallContext ctx) { }
+	@Override public void enterBooleanSystemCall(yoyoheadParser.BooleanSystemCallContext ctx) {
+		System.out.println("read boolean");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -242,25 +246,37 @@ public class CustomListener implements yoyoheadListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringReassignment(yoyoheadParser.StringReassignmentContext ctx) { }
+	@Override public void enterStringReassignment(yoyoheadParser.StringReassignmentContext ctx) {
+		if (ctx.STRING() != null) {
+			System.out.println("push " + ctx.STRING());
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringReassignment(yoyoheadParser.StringReassignmentContext ctx) { }
+	@Override public void exitStringReassignment(yoyoheadParser.StringReassignmentContext ctx) {
+		System.out.println("store " + ctx.IDENTIFIER());
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanReassignemnt(yoyoheadParser.BooleanReassignemntContext ctx) { }
+	@Override public void enterBooleanReassignemnt(yoyoheadParser.BooleanReassignemntContext ctx) {
+		if (ctx.BOOLEAN() != null) {
+			System.out.println("push " + ctx.BOOLEAN());
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanReassignemnt(yoyoheadParser.BooleanReassignemntContext ctx) { }
+	@Override public void exitBooleanReassignemnt(yoyoheadParser.BooleanReassignemntContext ctx) {
+		System.out.println("store " + ctx.IDENTIFIER());
+	}
 	/**
 	 * {@inheritDoc}
 	 *

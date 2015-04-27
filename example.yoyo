@@ -1,4 +1,4 @@
-number input := readInt()
+number input := readNumber()
 number fact := 1
 number one := 1
 

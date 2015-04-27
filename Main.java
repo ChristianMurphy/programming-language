@@ -8,8 +8,8 @@ class Main {
     public static void main(String[] args) {
 		// Java read file stream from example.txt
 		try {
-			CharStream cs = new ANTLRFileStream("example.yoyo");
-			Team8Lexer lexer = new Team8Lexer(cs);
+			CharStream cs = new ANTLRFileStream(args[0]);
+			yoyoheadLexer lexer = new yoyoheadLexer(cs);
 			CommonTokenStream tokens = new CommonTokenStream(lexer);
 			yoyoheadParser parser = new yoyoheadParser(tokens);
 			ParserRuleContext tree = parser.root(); // parse
