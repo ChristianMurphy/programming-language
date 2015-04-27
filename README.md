@@ -6,16 +6,15 @@
 2. Install [ANTLR4](http://www.antlr.org/)
 3. Install [iojs](https://iojs.org/en/index.html)
 
-
-### Build Instructions
-1. build the grammar file `antlr4 yoyohead.g4`
-2. compile the grammar `javac *.java`
-
 ### View the Abstract Syntax Tree
-1. run it `grun yoyohead root -gui example.yoyo`
+1. goto `src/compiler/`
+2. run `make ast`
 
 ### Compile a YoYo File to YO
-1. `java Main example.yoyo > example.yo`
+1. goto `src/compiler/`
+2. run `make compile`
 
 ### Execute a Yo File
-1. `node VM.js example.yo [program variables]`
+1. compile YoYo file first
+2. goto `src/runtime/`
+3. run `make run`
