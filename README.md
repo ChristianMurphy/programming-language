@@ -1,5 +1,5 @@
 # SER 502
-## Project 2 - Deepa, Vishal and Christian
+## Project 2
 
 ### Installation instructions
 1. Install [Java JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
